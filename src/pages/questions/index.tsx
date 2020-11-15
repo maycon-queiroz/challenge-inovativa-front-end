@@ -11,20 +11,8 @@ import QuestionTwo from "./QuestionTwo";
 import QuestionThree from "./QuestionThree";
 import QuestionFour from "./QuestionFour";
 
-interface Request {
-  id: string;
-
-  target?: string;
-
-  skills?: string;
-
-  initial?: string;
-
-  state?: string;
-}
-
 interface dataI {
-  id: string;
+  id?: string;
 
   target?: string;
 
@@ -38,7 +26,14 @@ interface dataI {
 const Questions: React.FC = () => {
   const history = useHistory();
   const location = useLocation<Request>();
-  const [Data, setData] = useState<dataI>();
+  const [Data, setData] = useState<dataI>(() => {
+    const data = localStorage.getItem("elo-provider");
+    if (data) {
+      return JSON.parse(data);
+    } else {
+      return [];
+    }
+  });
 
   const [questionOne, setQuestionOne] = useState(true);
   const [questionTwo, setQuestionTwo] = useState(false);
@@ -46,11 +41,9 @@ const Questions: React.FC = () => {
   const [questionFour, setQuestionFour] = useState(false);
 
   useEffect(() => {
-    // if (!location.state.id) {
-    //   history.push("/");
-    // }
-    // let userId = location.state.id;
-    // localStorage.setItem("elo-provider", JSON.stringify({ id: userId }));
+    if (!Data.id) {
+      history.push("/");
+    }
   }, []);
 
   function handleSubmit(event: FormEvent) {

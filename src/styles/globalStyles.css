@@ -1,28 +1,41 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-body{ 
-    background-color: #ffffff;
+body {
+  background-color: #ffffff;
 }
 
-h1{
-    font-family: 'Rubik';
+body,
+input,
+textarea {
+  font-family: "Open Sans";
+  outline: none;
+  border: 0;
 }
 
-h2, h3, h4, h5 {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
+h1 {
+  font-family: "Rubik";
 }
 
-p, li, input, label {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+}
+
+p,
+li,
+input,
+label {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }

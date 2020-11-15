@@ -22,7 +22,7 @@
   justify-content: flex-start;
 }
 
-.question .content-wrapper .check label {
+.question .content-wrapper .check {
   width: 100%;
   padding: 10px;
 
@@ -34,8 +34,9 @@
   justify-content: flex-start;
 }
 
-.question .content-wrapper .check label:hover {
-  background-color: #2dc5c9;
+.question .content-wrapper .check:hover {
+  background-color: #646ae4;
+  color: #fff;
 }
 
 .question .content-wrapper .check span {

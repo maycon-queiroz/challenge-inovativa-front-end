@@ -38,7 +38,7 @@
 }
 
 .question .content-wrapper .botao button.active {
-  background: #2dc5c9;
+  background: #646ae4;
   color: #fff;
 }
 
@@ -50,5 +50,5 @@
 }
 
 .question .content-wrapper .botao span.active {
-  background-color: #2dc5c9;
+  background-color: #646ae4;
 }

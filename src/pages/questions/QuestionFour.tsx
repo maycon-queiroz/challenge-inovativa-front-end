@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import HeaderQuestion from "../components/headerQuestions";
 
@@ -9,6 +9,37 @@ const QuestionFour: React.FC = () => {
   const [model, setModel] = useState(false);
   const [mvp, setMvp] = useState(false);
   const [client, setClient] = useState(false);
+
+  const [stage, setStage] = useState<string[]>([]);
+  const [stored, setStored] = useState<object>();
+
+  useEffect(() => {
+    const data = localStorage.getItem("elo-provider");
+    if (data) {
+      let stored = JSON.parse(data);
+      let newTarget = { ...stored, stages: [] };
+      setStored(newTarget);
+    }
+  }, []);
+
+  function getStage(item: string): void {
+    setStage([...stage, item]);
+    let newTarget = { ...stored, stages: [...stage, item] };
+
+    setStored(newTarget);
+    localStorage.setItem("elo-provider", JSON.stringify(newTarget));
+  }
+
+  function removeStage(item: string): void {
+    const position = stage.indexOf(item);
+    stage.splice(position, 1);
+    setStage([...stage]);
+
+    let newTarget = { ...stored, stages: [...stage] };
+
+    setStored(newTarget);
+    localStorage.setItem("elo-provider", JSON.stringify(newTarget));
+  }
 
   return (
     <>
@@ -21,7 +52,10 @@ const QuestionFour: React.FC = () => {
               id="ideal"
               type="button"
               className={ideal ? "active" : ""}
-              onClick={() => setIdeal(false)}
+              onClick={() => {
+                setIdeal(false);
+                removeStage("ideal");
+              }}
             >
               Idéia
             </button>
@@ -30,7 +64,10 @@ const QuestionFour: React.FC = () => {
               id="ideal"
               type="button"
               className={ideal ? "active" : ""}
-              onClick={() => setIdeal(true)}
+              onClick={() => {
+                setIdeal(true);
+                getStage("ideal");
+              }}
             >
               Idéia
             </button>
@@ -45,7 +82,10 @@ const QuestionFour: React.FC = () => {
               id="model"
               type="button"
               className={model ? "active" : ""}
-              onClick={() => setModel(false)}
+              onClick={() => {
+                setModel(false);
+                removeStage("model");
+              }}
             >
               Modelo de negócio
             </button>
@@ -54,7 +94,10 @@ const QuestionFour: React.FC = () => {
               id="model"
               type="button"
               className={model ? "active" : ""}
-              onClick={() => setModel(true)}
+              onClick={() => {
+                setModel(true);
+                getStage("model");
+              }}
             >
               Modelo de negócio
             </button>
@@ -69,7 +112,10 @@ const QuestionFour: React.FC = () => {
               id="mvp"
               type="button"
               className={mvp ? "active" : ""}
-              onClick={() => setMvp(false)}
+              onClick={() => {
+                setMvp(false);
+                removeStage("mvp");
+              }}
             >
               MVP
             </button>
@@ -78,7 +124,10 @@ const QuestionFour: React.FC = () => {
               id="mvp"
               type="button"
               className={mvp ? "active" : ""}
-              onClick={() => setMvp(true)}
+              onClick={() => {
+                setMvp(true);
+                getStage("mvp");
+              }}
             >
               MVP
             </button>
@@ -93,7 +142,10 @@ const QuestionFour: React.FC = () => {
               id="client"
               type="button"
               className={client ? "active" : ""}
-              onClick={() => setClient(false)}
+              onClick={() => {
+                setClient(false);
+                removeStage("client");
+              }}
             >
               Possui Clientes
             </button>
@@ -102,7 +154,10 @@ const QuestionFour: React.FC = () => {
               id="client"
               type="button"
               className={client ? "active" : ""}
-              onClick={() => setClient(true)}
+              onClick={() => {
+                setClient(true);
+                getStage("cliente");
+              }}
             >
               Possui Clientes
             </button>

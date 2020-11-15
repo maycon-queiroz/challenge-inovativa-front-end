@@ -4,6 +4,18 @@ import HeaderQuestion from "../components/headerQuestions";
 import "../../styles/pages/questions/questionOne.css";
 
 const QuestionOne: React.FC = () => {
+  const [target, setTarget] = useState<object>();
+
+  function getTarget(item: string): void {
+    const data = localStorage.getItem("elo-provider");
+    if (data) {
+      let { id } = JSON.parse(data);
+      let newTarget = { id, target: item };
+      setTarget(newTarget);
+      localStorage.setItem("elo-provider", JSON.stringify(newTarget));
+    }
+  }
+
   return (
     <>
       <HeaderQuestion
@@ -12,54 +24,57 @@ const QuestionOne: React.FC = () => {
       />
       <div className="box-check">
         <div className="check">
+          <input
+            type="radio"
+            id="cofundador"
+            name="value"
+            onClick={() => getTarget("cofundador")}
+          ></input>
           <label htmlFor="cofundador">
-            <input type="radio" id="cofundador" />
-            <span>
-              <h4>Encontre um cofundador</h4>
-              <p>Conecte-se com potenciais parceiros de negócios.</p>
-            </span>
+            <h4>Encontre um cofundador</h4>
+            <p>Conecte-se com potenciais parceiros de negócios.</p>
           </label>
         </div>
 
         <div className="check">
+          <input
+            type="radio"
+            id="mentor"
+            name="value"
+            onClick={() => getTarget("mentor")}
+          ></input>
           <label htmlFor="mentor">
-            <input type="radio" id="mentor" name="mentor" />
-            <span>
-              <h4>Encontre um mentor</h4>
-              <p>
-                Conecte-se com grandes consultores para ajudar a orientá-lo.
-              </p>
-            </span>
+            <h4>Encontre um mentor</h4>
+            <p>Conecte-se com grandes consultores para ajudar a orientá-lo.</p>
           </label>
         </div>
 
         <div className="check">
+          <input
+            type="radio"
+            id="consultor"
+            name="value"
+            onClick={() => getTarget("consultor")}
+          ></input>
           <label htmlFor="consultor">
-            <input type="radio" id="consultor" name="consultor"></input>
-            <span>
-              <h4>Torne-se um consultor (inscreva-se)</h4>
-              <p>
-                Ajude as startups a crescer compartilhando seu conhecimento.
-              </p>
-            </span>
+            <h4>Torne-se um consultor (inscreva-se)</h4>
+            <p>Ajude as startups a crescer compartilhando seu conhecimento.</p>
           </label>
         </div>
 
         <div className="check">
+          <input
+            type="radio"
+            id="networking"
+            name="value"
+            onClick={() => getTarget("networking")}
+          ></input>
           <label htmlFor="networking">
-            <input
-              type="radio"
-              id="networking"
-              name="networking"
-              value="networking"
-            ></input>
-            <span>
-              <h4>Apenas networking</h4>
-              <p>
-                Explore projetos paralelos, empregos, oportunidades de
-                freelancer e mentoria.
-              </p>
-            </span>
+            <h4>Apenas networking</h4>
+            <p>
+              Explore projetos paralelos, empregos, oportunidades de freelancer
+              e mentoria.
+            </p>
           </label>
         </div>
       </div>

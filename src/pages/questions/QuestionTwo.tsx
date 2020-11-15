@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderQuestion from "../components/headerQuestions";
 
 import "../../styles/pages/questions/questionTwo.css";
@@ -10,6 +10,37 @@ const QuestionTwo: React.FC = () => {
   const [developer, setDeveloper] = useState(false);
   const [ux, setUx] = useState(false);
   const [manage, setManage] = useState(false);
+
+  const [skill, setSkills] = useState<string[]>([]);
+  const [stored, setStored] = useState<object>();
+
+  useEffect(() => {
+    const data = localStorage.getItem("elo-provider");
+    if (data) {
+      let stored = JSON.parse(data);
+      let newTarget = { ...stored, skills: skill };
+      setStored(newTarget);
+    }
+  }, []);
+
+  function getSkill(item: string): void {
+    setSkills([...skill, item]);
+    let newTarget = { ...stored, skills: [...skill, item] };
+
+    setStored(newTarget);
+    localStorage.setItem("elo-provider", JSON.stringify(newTarget));
+  }
+
+  function removeSkill(item: string): void {
+    const position = skill.indexOf(item);
+    skill.splice(position, 1);
+    setSkills([...skill]);
+
+    let newTarget = { ...stored, skills: [...skill] };
+
+    setStored(newTarget);
+    localStorage.setItem("elo-provider", JSON.stringify(newTarget));
+  }
 
   return (
     <>
@@ -25,7 +56,10 @@ const QuestionTwo: React.FC = () => {
               id="design"
               type="button"
               className={design ? "active" : ""}
-              onClick={() => setDesign(false)}
+              onClick={() => {
+                setDesign(false);
+                removeSkill("design");
+              }}
             >
               Design
             </button>
@@ -34,7 +68,10 @@ const QuestionTwo: React.FC = () => {
               id="design"
               type="button"
               className={design ? "active" : ""}
-              onClick={() => setDesign(true)}
+              onClick={() => {
+                setDesign(true);
+                getSkill("design");
+              }}
             >
               Design
             </button>
@@ -46,7 +83,10 @@ const QuestionTwo: React.FC = () => {
               id="marketing"
               type="button"
               className={marketing ? "active" : ""}
-              onClick={() => setMarketing(false)}
+              onClick={() => {
+                setMarketing(false);
+                removeSkill("marketing");
+              }}
             >
               Marketing
             </button>
@@ -55,7 +95,10 @@ const QuestionTwo: React.FC = () => {
               id="marketing"
               type="button"
               className={marketing ? "active" : ""}
-              onClick={() => setMarketing(true)}
+              onClick={() => {
+                setMarketing(true);
+                getSkill("marketing");
+              }}
             >
               Marketing
             </button>
@@ -68,7 +111,10 @@ const QuestionTwo: React.FC = () => {
               id="business"
               type="button"
               className={business ? "active" : ""}
-              onClick={() => setBusiness(false)}
+              onClick={() => {
+                setBusiness(false);
+                removeSkill("business");
+              }}
             >
               Business
             </button>
@@ -77,7 +123,10 @@ const QuestionTwo: React.FC = () => {
               id="business"
               type="button"
               className={business ? "active" : ""}
-              onClick={() => setBusiness(true)}
+              onClick={() => {
+                setBusiness(true);
+                getSkill("business");
+              }}
             >
               Business
             </button>
@@ -87,19 +136,25 @@ const QuestionTwo: React.FC = () => {
         <label htmlFor="developer">
           {developer ? (
             <button
-              id="business"
+              id="developer"
               type="button"
               className={developer ? "active" : ""}
-              onClick={() => setDeveloper(false)}
+              onClick={() => {
+                setDeveloper(false);
+                removeSkill("developer");
+              }}
             >
               Desenvolvedor
             </button>
           ) : (
             <button
-              id="business"
+              id="developer"
               type="button"
               className={developer ? "active" : ""}
-              onClick={() => setDeveloper(true)}
+              onClick={() => {
+                setDeveloper(true);
+                getSkill("developer");
+              }}
             >
               Desenvolvedor
             </button>
@@ -109,19 +164,25 @@ const QuestionTwo: React.FC = () => {
         <label htmlFor="ux">
           {ux ? (
             <button
-              id="business"
+              id="ux"
               type="button"
               className={ux ? "active" : ""}
-              onClick={() => setUx(false)}
+              onClick={() => {
+                setUx(false);
+                removeSkill("ux");
+              }}
             >
               UX
             </button>
           ) : (
             <button
-              id="business"
+              id="ux"
               type="button"
               className={ux ? "active" : ""}
-              onClick={() => setUx(true)}
+              onClick={() => {
+                setUx(true);
+                getSkill("ux");
+              }}
             >
               UX
             </button>
@@ -131,19 +192,25 @@ const QuestionTwo: React.FC = () => {
         <label htmlFor="manage">
           {manage ? (
             <button
-              id="business"
+              id="manage"
               type="button"
               className={manage ? "active" : ""}
-              onClick={() => setManage(false)}
+              onClick={() => {
+                setManage(false);
+                removeSkill("manage");
+              }}
             >
               Gestão
             </button>
           ) : (
             <button
-              id="business"
+              id="manage"
               type="button"
               className={manage ? "active" : ""}
-              onClick={() => setManage(true)}
+              onClick={() => {
+                setManage(true);
+                getSkill("manage");
+              }}
             >
               Gestão
             </button>

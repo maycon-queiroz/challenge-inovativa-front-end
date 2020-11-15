@@ -57,8 +57,8 @@ const Login: React.FC = () => {
         terms
       });
       const id = response.data.id;
-
-      history.push({ pathname: "/question", state: { id } });
+      localStorage.setItem("elo-provider", JSON.stringify({ id }));
+      history.push("/question");
     } catch (error) {
       setMessage({
         type: "error",
