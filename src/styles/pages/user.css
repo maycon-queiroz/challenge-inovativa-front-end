@@ -1,0 +1,163 @@
+.user-area{
+    position: relative;
+    font-family: 'Open Sans';
+    
+}
+
+.user-area .welcome{
+    position: absolute;
+
+    margin-top: 108px;
+    margin-left: 150px;
+}
+
+.user-area .planing{
+    position: absolute;
+
+    margin: 214px 236px;
+    margin-left: 150px;
+
+    line-height: 40px;
+}
+
+.user-area .planing p{
+    font-family: 'Roboto';
+    font-size: 13px;
+    
+}
+
+.user-area .planing .plano{
+    background-color: #f5f5f7;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 500px;
+    height: 80px;
+
+    margin: auto 20px;
+
+    border-radius: 14px;
+}
+
+.user-area .planing .plano img{
+    width: 64px;
+    height: 64px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin: auto 10px;
+
+    border: none;
+}
+
+.user-area .planing .plano h4{
+    font-size: 16px;
+    font-family: 'Roboto';
+    line-height: 25.5px;
+}
+
+.user-area .planing .plano p{
+    font-size: 13px;
+    font-family: 'Roboto';
+    line-height: 15.3px;
+}
+
+.user-area .planing .plano img{
+    font-size: 13px;
+}
+
+.user-area .planing .plano button {
+    background-color: #ff6f20;
+    color: #ffffff;
+
+    width: 120px;
+    height: 40px;
+    border-radius: 8px;
+    border:none;
+}
+
+.user-area .cursos{
+    position: absolute;
+
+    font-family: 'Rubik';
+
+    font-size: 24px;
+    line-height: 38px;
+
+    margin-top: 400px;
+    margin-left: 236px;
+
+    max-width: 100%;
+}
+
+.user-area .cursos h2{
+    font-size: 24px;
+}
+
+.user-area .info{
+
+    position: absolute;
+    right: 20px;
+    margin-top: 100px;
+}
+
+.user-area .info .project{
+
+    display: flex;
+}
+
+.user-area .info .project div{
+    background-color: #f5f5f7;
+    
+    width: 208px;
+    height: 96.33px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 14px;
+    
+    margin: auto 15px ;
+    
+}
+
+.user-area .info .project div h1{
+    font-size: 64px;
+}
+
+.user-area .info .project div h3{
+    font-size: 16px;
+    max-width: 108px;
+}
+
+.user-area .info .advance{
+
+}
+
+.user-area .info .advance h2{
+    margin-top: 25px;
+}
+
+.user-area .info .advance .information h3:nth-child(2){
+    opacity: 0.4;    
+}
+
+.user-area .info .advance .graphic{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.user-area .info .advance .graphic .information{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.user-area .info .advance .graphic h3:nth-child(3){
+    padding: 5px;
+    background-color: #f5f5f7;
+
+}

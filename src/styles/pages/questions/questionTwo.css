@@ -1,0 +1,39 @@
+.question .content-wrapper .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 25px;
+
+  margin-bottom: 30px;
+}
+
+.question .content-wrapper .botoes {
+  max-width: 584px;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  row-gap: 34px;
+}
+
+.question .content-wrapper .botoes button {
+  font-family: "Roboto";
+  width: 172px;
+  height: 52px;
+
+  padding: 20px 10px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  border: 0;
+
+  font-size: 20px;
+  line-height: 0;
+  outline: none;
+}
+
+.question .content-wrapper .botoes button.active {
+  background: #2dc5c9;
+  color: #ffffff;
+}
