@@ -63,10 +63,10 @@ const Questions: React.FC = () => {
 
       const response = await api.put<dataI>("stage", {
         user_id: id,
-        target
+        target,
         skills,
         initial,
-        stage,
+        stage
       });
 
       history.push("/user");
