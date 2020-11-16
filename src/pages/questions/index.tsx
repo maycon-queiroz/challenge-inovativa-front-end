@@ -12,7 +12,7 @@ import QuestionThree from "./QuestionThree";
 import QuestionFour from "./QuestionFour";
 
 interface dataI {
-  id?: string;
+  user_id?: string;
 
   target?: string;
 
@@ -20,12 +20,19 @@ interface dataI {
 
   initial?: string;
 
-  state?: string;
+  stage?: string;
+}
+
+interface MessageInterface {
+  type: string;
+
+  message: string;
 }
 
 const Questions: React.FC = () => {
   const history = useHistory();
-  const location = useLocation<Request>();
+  const [message, setMessage] = useState<MessageInterface>();
+
   const [Data, setData] = useState<dataI>(() => {
     const data = localStorage.getItem("elo-provider");
     if (data) {
@@ -41,28 +48,47 @@ const Questions: React.FC = () => {
   const [questionFour, setQuestionFour] = useState(false);
 
   useEffect(() => {
-    if (!Data.id) {
+    if (!Data.user_id) {
       history.push("/");
     }
   }, []);
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    console.log(event);
+    const data = localStorage.getItem("elo-provider");
+    if (data) {
+      // try {
+      const { id, target, skills, stage, initial } = JSON.parse(data);
+
+      const response = await api.put<dataI>("stage", {
+        user_id: id,
+        target
+        skills,
+        initial,
+        stage,
+      });
+
+      history.push("/user");
+      // } catch (error) {
+      //   setMessage({
+      //     type: "error",
+      //     message:
+      //       "this email already exists another user, please choose another"
+      //   });
+      // }
+    }
   }
 
   return (
     <div className="question">
       <div className="content-wrapper">
-        <form></form>
         {questionOne && (
           <>
             <TopBar customWidth="25">
               <button
                 type="submit"
                 onClick={event => {
-                  handleSubmit(event);
                   setQuestionOne(false);
                   setQuestionTwo(true);
                 }}
@@ -110,7 +136,7 @@ const Questions: React.FC = () => {
         {questionFour && (
           <>
             <TopBar customWidth="90">
-              <button onClick={() => {}} className="next">
+              <button onClick={handleSubmit} className="next">
                 Avançar
               </button>
             </TopBar>

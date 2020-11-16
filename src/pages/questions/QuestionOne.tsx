@@ -9,8 +9,8 @@ const QuestionOne: React.FC = () => {
   function getTarget(item: string): void {
     const data = localStorage.getItem("elo-provider");
     if (data) {
-      let { id } = JSON.parse(data);
-      let newTarget = { id, target: item };
+      let { user_id } = JSON.parse(data);
+      let newTarget = { user_id, target: item };
       setTarget(newTarget);
       localStorage.setItem("elo-provider", JSON.stringify(newTarget));
     }

@@ -56,8 +56,8 @@ const Login: React.FC = () => {
         password,
         terms
       });
-      const id = response.data.id;
-      localStorage.setItem("elo-provider", JSON.stringify({ id }));
+      const user_id = response.data.id;
+      localStorage.setItem("elo-provider", JSON.stringify({ user_id }));
       history.push("/question");
     } catch (error) {
       setMessage({
