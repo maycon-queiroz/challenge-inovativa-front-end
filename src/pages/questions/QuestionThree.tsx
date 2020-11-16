@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 
+import { useHistory } from "react-router-dom";
 import HeaderQuestion from "../components/headerQuestions";
 
 import "../../styles/pages/questions/questionThree.css";
 
 const QuestionThree: React.FC = () => {
-  const [provider, setProvider] = useState<boolean>(false);
+  const history = useHistory();
+  const [provider, setProvider] = useState<boolean | "">();
   const [stored, setStored] = useState<object>();
 
   useEffect(() => {
@@ -46,10 +48,12 @@ const QuestionThree: React.FC = () => {
         <button
           type="button"
           data-id="0"
-          className={!provider ? "active" : ""}
+          className={provider === false ? "active" : ""}
           onClick={() => {
             setProvider(false);
             getProvider(false);
+
+            history.push("startup");
           }}
         >
           Ainda não

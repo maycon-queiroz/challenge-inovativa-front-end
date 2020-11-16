@@ -3,35 +3,35 @@ import { useHistory } from "react-router-dom";
 
 import { FiPlus } from "react-icons/fi";
 
-import Sidebar from '../pages/components/topBar/TopBar';
+import SideBar from "./components/sideBar/SideBar";
 
-import '../styles/pages/createStartup.css';
+import perfil from "../images/ProfilePicture.svg";
+
+import "../styles/pages/createStartup.css";
 //import '../styles/pages/create-nursingHome.css';
 
 import api from "../services/api";
 
 export default function CreateNursingHome() {
-
   const history = useHistory();
-  
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
-  
 
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
-    if(!event.target.files){
+    if (!event.target.files) {
       return;
-    }    
+    }
 
     const selectedImages = Array.from(event.target.files);
 
     setImages(selectedImages);
 
     const selectedImagesPreview = selectedImages.map(image => {
-      return URL.createObjectURL(image)
+      return URL.createObjectURL(image);
     });
 
     setPreviewImages(selectedImagesPreview);
@@ -42,75 +42,75 @@ export default function CreateNursingHome() {
 
     const data = new FormData();
 
-    data.append('name', name);
-    data.append('email', email);
-    data.append('phone', phone);
+    data.append("name", name);
+    data.append("email", email);
+    data.append("phone", phone);
 
     images.forEach(image => {
-      data.append('images', image);
+      data.append("images", image);
     });
 
-    await api.post('nursingHome', data);
+    await api.post("nursingHome", data);
 
-    alert('Cadastro realizado com sucesso!');
+    alert("Cadastro realizado com sucesso!");
 
-    history.push('/app');
+    history.push("/app");
   }
 
   return (
     <div id="page-create-startup">
-
+      <SideBar isLogo={false} />
       <main>
         <form onSubmit={handleSubmit} className="create-startup-form">
-          <fieldset>
-            
-            <div className="input-block">
-
-              <div className="images-container">
-                {previewImages.map(image => {
-                  return (
-                    <img key={image} src={image} alt={image} />
-                  )
-                })}
+          <div className="input-block">
+            <div className="images-container">
+              <span>
                 <label htmlFor="images[]" className="new-image">
                   <FiPlus size={24} color="#343AB5" />
                 </label>
-
-              </div>
-
-                <input onChange={handleSelectImages} type="file" id="images[]"/>
+              </span>
             </div>
 
-            <span>A imagem enviada deve ter 500 pixels de largura e 500 pixels de comprimento</span>
+            <input onChange={handleSelectImages} type="file" id="images[]" />
+          </div>
 
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input 
-              id="name" 
-              value={name} 
-              onChange={event => setName(event.target.value)} />
-            </div>
+          <span>A imagem: 500x500 pixels</span>
 
-            <div className="input-block">
-              <label htmlFor="email">Email</label>
-              <input 
-              id="email" 
-              value={email} 
-              onChange={event => setEmail(event.target.value)} />
-            </div>
+          <div className="input-block">
+            <label htmlFor="name">Nome</label>
+            <input
+              id="name"
+              value={name}
+              onChange={event => setName(event.target.value)}
+            />
+          </div>
 
-            <div className="input-block">
-              <label htmlFor="phone">Telefone</label>
-              <input 
+          <div className="input-block">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              value={email}
+              onChange={event => setEmail(event.target.value)}
+            />
+          </div>
+
+          <div className="input-block">
+            <label htmlFor="phone">Telefone</label>
+            <input
               type="tel"
-              id="phone" 
-              value={phone} 
-              onChange={event => setPhone(event.target.value)} />
-            </div>
+              id="phone"
+              value={phone}
+              onChange={event => setPhone(event.target.value)}
+            />
+          </div>
 
-          </fieldset>
-
-          <button className="confirm-button" type="submit">
+          <button
+            className="confirm-button"
+            type="submit"
+            onClick={() => {
+              history.push("dashboard");
+            }}
+          >
             Salvar
           </button>
         </form>
@@ -118,5 +118,3 @@ export default function CreateNursingHome() {
     </div>
   );
 }
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;

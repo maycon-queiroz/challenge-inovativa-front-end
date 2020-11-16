@@ -47,37 +47,37 @@ const Questions: React.FC = () => {
   const [questionThee, setQuestionThee] = useState(false);
   const [questionFour, setQuestionFour] = useState(false);
 
-  useEffect(() => {
-    if (!Data.user_id) {
-      history.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!Data.user_id) {
+  //     history.push("/");
+  //   }
+  // }, []);
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    const data = localStorage.getItem("elo-provider");
-    if (data) {
-      // try {
-      const { id, target, skills, stage, initial } = JSON.parse(data);
+    // const data = localStorage.getItem("elo-provider");
+    // if (data) {
+    //   try {
+    //     const { id, target, skills, stage, initial } = JSON.parse(data);
 
-      const response = await api.put<dataI>("stage", {
-        user_id: id,
-        target,
-        skills,
-        initial,
-        stage
-      });
+    //     const response = await api.put<dataI>("stage", {
+    //       user_id: id,
+    //       target,
+    //       skills,
+    //       initial,
+    //       stage
+    //     });
 
-      history.push("/user");
-      // } catch (error) {
-      //   setMessage({
-      //     type: "error",
-      //     message:
-      //       "this email already exists another user, please choose another"
-      //   });
-      // }
-    }
+    history.push("/dashboard");
+    // } catch (error) {
+    //   setMessage({
+    //     type: "error",
+    //     message:
+    //       "this email already exists another user, please choose another"
+    //   });
+    // }
+    // }
   }
 
   return (

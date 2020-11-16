@@ -6,6 +6,8 @@ import Courses from "./components/courses/Courses";
 
 import graphic from "../images/graphic.svg";
 import mentoring from "../images/mentoring.svg";
+import figma from "../images/figma.svg";
+import frame from "../images/frame.svg";
 
 import "../styles/pages/user.css";
 
@@ -22,7 +24,7 @@ const User: React.FC = () => {
       <div className="planing">
         <h3>Planejamento</h3>
         <div className="plano">
-          <img src="" alt="" />
+          <img src={figma} alt="" />
           <div>
             <h4>Canvas</h4>
             <p>Business model canva</p>
@@ -69,10 +71,9 @@ const User: React.FC = () => {
           </div>
           <img src={graphic} alt="grafico" />
         </div>
+
         <br></br>
-        <br></br>
-        <br></br>
-        <img src={mentoring} alt="mentoria" />
+        <img className="mentoria" src={mentoring} alt="mentoria" />
       </div>
     </div>
   );

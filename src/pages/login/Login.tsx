@@ -49,25 +49,25 @@ const Login: React.FC = () => {
   ): Promise<void> {
     event.preventDefault();
 
-    try {
-      const response = await api.post<LoginInterface>("users", {
-        name,
-        email,
-        password,
-        terms
-      });
-      const user_id = response.data.id;
-      localStorage.setItem("elo-provider", JSON.stringify({ user_id }));
-      history.push("/question");
-    } catch (error) {
-      setMessage({
-        type: "error",
-        message: "this email already exists another user, please choose another"
-      });
+    // try {
+    //   const response = await api.post<LoginInterface>("users", {
+    //     name,
+    //     email,
+    //     password,
+    //     terms
+    //   });
+    //   const user_id = response.data.id;
+    //   localStorage.setItem("elo-provider", JSON.stringify({ user_id }));
+    history.push("/question");
+    // } catch (error) {
+    //   setMessage({
+    //     type: "error",
+    //     message: "this email already exists another user, please choose another"
+    //   });
 
-      setInitial(false);
-      setTerms(false);
-    }
+    //   setInitial(false);
+    //   setTerms(false);
+    // }
   }
 
   return (

@@ -18,9 +18,9 @@ const Routes: React.FC = () => {
         <Route path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
         <Route path="/question" component={Question} />
-        <Route path="/user" component={User} />
-        <Route path="/createStartup" component={createStartup} />
-        <Route path="/createUser" component={createUser} />
+        <Route path="/dashboard" component={User} />
+        <Route path="/startup" component={createStartup} />
+        <Route path="/profile" component={createUser} />
         <Route path="/canva" component={Canva} />
         {/* Rotas para teste */}
         <Route path="/ola" component={TopBar} />{" "}
