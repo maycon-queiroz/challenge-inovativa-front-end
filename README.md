@@ -1,37 +1,38 @@
-# ELO -Digital
-📓 Plataform to connect startups and investors
+# MEGA HACK #5 DESAFIO INOVATIVA - TIME 7
 
-# :computer: Technologies
-This project was made using the follow technologies:
+## Sobre o projeto
+📓 A Elo Digital surgiu para ajudar Startups na fase de ideação, fomentando sua entrada no ecossistema, ofertando participação em cursos, conexões, follow up, networking e informações de eventos
 
+
+
+# :computer: Tecnologias
+Esse projeto foi construido usando as seguintes tecnologias:
 * [Typescript](https://www.typescriptlang.org/)      
 * [React](https://reactjs.org/)      
 * [Expo](https://expo.io/)       
 * [Express](https://expressjs.com/)      
 
-# :rocket: Features
+# :rocket: Características
 
-* Website to sign up startups and investors.
-* App to connect startups and investors.
+* Website para startups entrarem em contato com investdores
 
-# :construction_worker: How to run
+# :construction_worker: Como instalar o projeto
 ```bash
-# Clone Repository
+# Clonando Repositório
 $ git clone https://github.com/MegaHakcInovativa/challenge-ivonativa-frontend.git
+
+# Entrando na pasta 
+$ cd challenge-ivonativa-frontend 
+
+# Instalando dependencias
+$ yarn install ou npm install 
+
+# Rodando a aplicação
+$ yarn start ou npm start
 ```
 
 
-### 💻 Run Web Project
+Vá para http://localhost:3000/ para ver o resultado
 
-```bash
-# Go to web folder
-$ cd challenge-ivonativa-frontend
-
-# Install Dependencies
-$ yarn install
-
-# Run Aplication
-$ yarn start
-```
-Go to http://localhost:3000/ to see the result.
-
+### Time
+Lhuan Gonçalves, Maycon Queiroz, Melody Rodrigues, Rafael Bertrand e Vitor Risso
