@@ -11,8 +11,8 @@ This project was made using the follow technologies:
 
 # :rocket: Features
 
-* Website to sign up teachers and students.
-* App to connect teachers and students.
+* Website to sign up startups and investors.
+* App to connect startups and investors.
 
 # :construction_worker: How to run
 ```bash
