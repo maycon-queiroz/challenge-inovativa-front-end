@@ -33,11 +33,11 @@ function SideBar({ isLogo }: SideBarProps) {
           <AiFillHome size={26} color="#ffffff" />
         </Link>
 
-        <Link to="/">
+        <Link to="/startup">
           <GiGraduateCap size={26} color="#ffffff" />
         </Link>
 
-        <Link to="/">
+        <Link to="/profile">
           <MdPersonOutline size={26} color="#ffffff" />
         </Link>
 
